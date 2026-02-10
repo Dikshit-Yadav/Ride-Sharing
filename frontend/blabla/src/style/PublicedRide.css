@@ -1,0 +1,105 @@
+body {
+  background: #f5f7fa;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #054752;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.container p {
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.rides-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 6px;
+  position: relative;
+
+right: 70px;}
+
+.ride-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 400px;
+}
+
+.ride-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+.ride-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #054752;
+  margin-bottom: 10px;
+}
+
+.ride-card p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.ride-card p:nth-child(3) {
+  font-weight: 600;
+  color: #00a8a8;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 18px;
+  }
+
+  .container h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 20px 12px;
+    padding: 16px;
+  }
+
+  .rides-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ride-card {
+    padding: 14px 16px;
+  }
+
+  .ride-card h3 {
+    font-size: 15px;
+  }
+
+  .ride-card p {
+    font-size: 12.5px;
+  }
+}

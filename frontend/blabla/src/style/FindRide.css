@@ -1,0 +1,158 @@
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  position: relative;
+  bottom: 100px;
+}
+
+.search-box input,
+.search-box button {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.search-box button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background: #125aa3;
+}
+
+.input-group {
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  background: white;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.suggestions div {
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.suggestions div:hover {
+  background: #f1f1f1;
+}
+
+.section-title {
+  margin-bottom: 12px;
+}
+
+.rides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.ride-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.ride-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.ride-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: bold;
+  color: #2e7d32;
+  font-size: 16px;
+}
+
+.ride-info {
+  margin: 12px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.ride-info p {
+  margin: 4px 0;
+}
+
+.book-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ff9800;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.book-btn:hover {
+  background: #e68900;
+}
+
+.empty-text {
+  color: #777;
+  text-align: center;
+}
+
+.rides-scroll {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 6px;
+  scroll-behavior: smooth;
+}
+
+.rides-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rides-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rides-scroll::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+.rides-scroll::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}

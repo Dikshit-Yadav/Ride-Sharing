@@ -1,0 +1,94 @@
+.bookride-container {
+  max-width: 700px;
+  margin: 80px auto 40px;
+  padding: 0 16px;
+}
+
+.bookride-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 28px;
+  color: #222;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+.card label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.card select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.card select:focus {
+  border-color: #007bff;
+}
+
+.price {
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c7a2c;
+}
+
+.book-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.book-btn:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.book-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.book-btn:disabled {
+  background: #9bbcf5;
+  cursor: not-allowed;
+}
+
+.bookride-container p {
+  text-align: center;
+  color: #666;
+}
+
+@media (max-width: 480px) {
+  .bookride-container h2 {
+    font-size: 24px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+}

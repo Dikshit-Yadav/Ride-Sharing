@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.homeContainer {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background-color: #00a6d6;
+  color: white;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #f5f7fa;
+}
+
+.navbar-btns,
+.navbar-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.name {
+  font-weight: 500;
+}
+
+button {
+  padding: 7px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.25s;
+}
+
+.lgn-btn,
+.lgt-btn {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.lgn-btn:hover,
+.lgt-btn:hover {
+  background-color: white;
+  color: #00a6d6;
+}
+
+.rgs-btn {
+  background-color: white;
+  color: #00a6d6;
+  font-weight: 600;
+}
+
+.rgs-btn:hover {
+  background-color: #eaf7fb;
+}
+
+.hero {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero h2 {
+  font-size: 36px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 26px;
+  max-width: 520px;
+}
+
+.btn-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.create-rd,
+.find-rd {
+  font-weight: 600;
+  padding: 10px 24px;
+}
+
+.create-rd {
+  background-color: #00a6d6;
+  color: white;
+}
+
+.create-rd:hover {
+  background-color: #008db8;
+}
+
+.find-rd {
+  background-color: white;
+  color: #00a6d6;
+  border: 1px solid #00a6d6;
+}
+
+.find-rd:hover {
+  background-color: #eaf7fb;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  right: -30px;
+  top: 60px;
+  background: white;
+  color: #282727;
+  border-radius: 8px;
+  width: 170px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 100;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.dropdown button:hover {
+  background-color: #f5f7fa;
+  color: #555;
+}
+
+.dropdown .danger {
+  color: red;
+  font-weight: 600;
+}
+
+.notification-icon {
+  position: relative;
+  right: 70px;
+  top: 19px;
+  font-size: 18px;
+  /* margin-right: 54px; */
+  cursor: pointer;
+}
+
+.notification-icon i {
+  color: #333;
+}
+
+.notification-icon:hover i {
+  color: #04262d;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.notifications-popup {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  width: 260px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  z-index: 100;
+  color: #333;
+}
+
+.notification-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notifications-popup h4 {
+  margin: 0 0 8px 0;
+}
+
+
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 18px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .hero h2 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 7px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-btns,
+  .navbar-actions {
+    gap: 8px;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .create-rd,
+  .find-rd {
+    width: 100%;
+    max-width: 260px;
+  }
+}

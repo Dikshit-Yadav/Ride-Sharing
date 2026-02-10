@@ -1,0 +1,57 @@
+.myrides-container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 20px;
+}
+
+.myrides-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+}
+
+.ride-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.ride-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
