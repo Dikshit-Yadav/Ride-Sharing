@@ -45,7 +45,7 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      { id: user._id },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
@@ -106,8 +106,9 @@ exports.resetPassword = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) return res.json({ message: "user not found" });
-
+    console.log(user.resetOTP,otp)
     if (user.restOTP == otp) {
+      console("success")
       user.password = newPassword;
       user.resetOTP = null;
       user.resetOTPExpiry = null

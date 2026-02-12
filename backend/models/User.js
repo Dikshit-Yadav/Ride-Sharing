@@ -3,6 +3,10 @@ const { type } = require("node:os");
 
 const userSchema = new mongoose.Schema(
   {
+    profilePic: {
+      type: String,
+      required: false,
+    },
     name: {
       type: String,
       required: true,

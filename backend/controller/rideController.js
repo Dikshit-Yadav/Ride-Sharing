@@ -58,7 +58,7 @@ exports.myRides = async (req, res) => {
 
 exports.publicedRide = async (req, res) => {
     try {
-        const rides = await Ride.find({ driver: req.user.id }).populate("vehicle").sort({ createdAt: -1 });
+        const rides = await Ride.find({ driver: req.user.id }).populate("vehicle").populate("driver").sort({ createdAt: -1 });
         res.status(200).json({
             count: rides.length,
             rides
@@ -68,6 +68,21 @@ exports.publicedRide = async (req, res) => {
     }
 
 }
+
+exports.deleteRide = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const ride = await Ride.findById(id);
+
+        ride.deleteOne();
+        res.status(200).json({ message: "ride deleted successfully" });
+    }catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+
+
 
 exports.findRide = async (req, res) => {
     try {

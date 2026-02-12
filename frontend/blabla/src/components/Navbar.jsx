@@ -117,6 +117,9 @@ function Navbar() {
 
             {openMenu && (
               <div className="dropdown">
+                <button onClick={()=>{
+                  navigate("/my-profile")
+                }}>My Profile</button>
                 <button
                   className="clr"
                   onClick={() => {

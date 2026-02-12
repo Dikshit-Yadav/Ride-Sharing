@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 app.use("/auth", require("./routes/authroute"));
 app.use("/ride", require("./routes/rideRoutes"));
 app.use("/vehicle", require("./routes/vehicleRegisterRoute"));
-
+app.use("/profile", require("./routes/myProfileRoute"));
 
 
 app.get("/", (req, res) => {

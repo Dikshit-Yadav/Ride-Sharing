@@ -1,0 +1,77 @@
+.edit-profile-container {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 0 16px;
+}
+
+.edit-profile-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.edit-profile-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.edit-profile-card label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.edit-profile-card input {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.edit-profile-card input:focus {
+  border-color: #007bff;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.edit-actions button {
+  flex: 1;
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-actions button[type="submit"] {
+  background: #007bff;
+  color: #fff;
+}
+
+.edit-actions button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+.cancel-btn {
+  background: #e0e0e0;
+}
+
+.cancel-btn:hover {
+  background: #cfcfcf;
+}
+
+@media (max-width: 480px) {
+  .edit-actions {
+    flex-direction: column;
+  }
+}

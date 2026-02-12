@@ -22,6 +22,18 @@ function PublicedRide() {
     fetchMyRides();
   }, []);
 
+const deleteRide = async (id) => {
+  try {
+    await API.delete(`/ride/delete/${id}`, { withCredentials: true });
+    alert("Ride deleted successfully");
+    setRides(rides => rides.filter(r => r._id !== id));
+  } catch (err) {
+    alert("Ride deletion failed");
+  }
+};
+
+
+
   return (
     <>
       <Navbar />
@@ -47,6 +59,8 @@ function PublicedRide() {
               <p>Date: {ride.date} | Time:{ride.time}</p>
               <p>Price: ₹{ride.price}</p>
               <p>Seats Available: {ride.seats}</p>
+              <p>Driver: {ride.driver.name}</p>
+              <button onClick={() => deleteRide(ride._id)}>Delete</button>
             </div>
           ))}
         </div>

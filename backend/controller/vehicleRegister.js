@@ -29,7 +29,7 @@ exports.registerVehicle = async (req, res) => {
 
 exports.userVehicles = async (req, res) => {
   try {
-    const vehicles = await Vehicle.find({ user: req.user.id });
+    const vehicles = await Vehicle.find({ user: req.user.id }).populate("user");
 
     res.status(200).json({
       count: vehicles.length,
@@ -37,6 +37,24 @@ exports.userVehicles = async (req, res) => {
     });
   }
   catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteVehicle = async (req, res) => {
+  try {
+    const { id } = req.params;
+    // console.log(id)
+    const vehicle = await Vehicle.findById(id); 
+    if (!vehicle) {
+      return res.status(404).json({ message: "vehicle not found" });
+    }
+    if (vehicle.user.toString() !== req.user.id) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    await vehicle.deleteOne();
+    res.status(200).json({ message: "vehicle deleted successfully" });
+  }catch (err) {
     res.status(500).json({ message: err.message });
   }
 };

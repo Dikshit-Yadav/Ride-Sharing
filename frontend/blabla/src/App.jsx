@@ -12,6 +12,8 @@ import PublicedRide from "./pages/PublicedRide";
 import FindRide from "./pages/FindRide";
 import BookRide from "./pages/BookRide";
 import MYRides from "./pages/MyRides";
+import MyProfile from "./pages/MyProfile";
+import EditProfile from "./pages/EditProfile";
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
         <Route path="/publiced-rides" element={<PublicedRide />} />
         <Route path="/rides" element={<FindRide />} />
         <Route path="/ride/book" element={<BookRide />} />
+        <Route path="/my-profile" element={<MyProfile />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
       </Routes>
     </BrowserRouter>
   );
