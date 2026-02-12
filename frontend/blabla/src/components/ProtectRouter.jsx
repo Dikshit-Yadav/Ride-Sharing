@@ -9,14 +9,14 @@ const ProtectedRouteWrapper = ({ children, loading, isLoggedIn, isEmail }) => {
   if (loading) return <div>Loading...</div>; 
 
   if (isLoggedIn !== undefined) {
-    if (!token || !isLoggedIn) {
+    if (!token) {
       return <Navigate to="/login" replace />;
     }
   }
 
   if (isEmail !== undefined) {
     if (!email) {
-      return <Navigate to="/forget" replace />
+      return <Navigate to="/forget" replace />;
     }
   }
  

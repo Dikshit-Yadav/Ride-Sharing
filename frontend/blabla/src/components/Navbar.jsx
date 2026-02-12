@@ -72,12 +72,18 @@ function Navbar() {
     }
   };
 
-  const logout = () => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
+  const logout = async() => {
+    try{
+      await API.get("/auth/logout");
+      const confirmLogout = window.confirm("Are you sure you want to logout?");
     if (confirmLogout) {
       localStorage.removeItem("user");
       navigate("/login");
     }
+    }catch(err){
+      console.error(err);
+    }
+    
   };
 
   return (

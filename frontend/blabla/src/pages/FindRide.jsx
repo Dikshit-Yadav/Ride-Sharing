@@ -9,10 +9,8 @@ function FindRide() {
   const navigate = useNavigate();
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  // const [date, setDate] = useState("");
   const [seats, setSeats] = useState(1);
   const [rides, setRides] = useState([]);
-  // const [similar, setSimilar] = useState([]);
   const [fromSuggeation, setFromSuggeation] = useState([]);
   const [toSuggeation, setToSuggeation] = useState([]);
   const [showFrom, setShowFrom] = useState(false);
@@ -67,17 +65,6 @@ function FindRide() {
       console.error(err);
     }
   };
-
-  // const loadSimilarRides = async (id) => {
-  //   try {
-  //     const res = await API.get(`/ride/similar/${id}`, {
-  //       withCredentials: true
-  //     });
-  //     setSimilar(res.data.similarRides);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   return (
     <>
@@ -166,7 +153,6 @@ function FindRide() {
                 <div
                   className="ride-card"
                   key={ride._id}
-                  // onClick={() => loadSimilarRides(ride._id)}
                 >
                   <div className="ride-header">
                     <h4>{ride.source} → {ride.destination}</h4>
