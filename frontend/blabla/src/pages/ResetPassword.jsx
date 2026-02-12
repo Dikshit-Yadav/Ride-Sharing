@@ -13,8 +13,10 @@ function ResetPassword() {
       await API.post("/auth/reset-password", {
         otp,
         newPassword,
+        email: localStorage.getItem("email")
       });
       alert("password reseted ");
+      localStorage.removeItem("email");
       navigate("/login")
     } catch {
       alert("invalid OTP");
@@ -26,7 +28,7 @@ function ResetPassword() {
 
       <form onSubmit={submit}>
         <h2>Reset Password</h2>
-        {/* <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} /> */}
+        {/* <input  type="email" value={localStorage.getItem("email")} /> */}
         <input placeholder="OTP" onChange={(e) => setOtp(e.target.value)} />
         <input
           type="password"

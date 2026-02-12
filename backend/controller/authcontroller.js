@@ -1,9 +1,6 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer")
-
-let TempMail;
-
 exports.register = async (req, res) => {
   try {
     const { name, email, password, phone } = req.body;
@@ -67,11 +64,12 @@ exports.login = async (req, res) => {
 exports.forgetPassword = async (req, res) => {
   try {
     const { email } = req.body;
-    TempMail = email;
+    
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "user not found" })
     }
+    
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     console.log(otp)
     user.resetOTP = otp;
@@ -101,27 +99,27 @@ exports.forgetPassword = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
   try {
-    const { otp, newPassword } = req.body;
-    let email = TempMail
+    const { otp, newPassword, email } = req.body;
+    console.log(email)
     const user = await User.findOne({ email });
 
-    if (!user) return res.json({ message: "user not found" });
-    console.log(user.resetOTP,otp)
-    if (user.restOTP == otp) {
-      console("success")
+    if (!user) return res.status(404).json({ message: "user not found" });
+
+    if (user.resetOTPExpiry < Date.now()) {
+      return res.status(400).json({ message: "OTP expired" });
+    }
+
+    if (user.resetOTP == otp) {
       user.password = newPassword;
       user.resetOTP = null;
       user.resetOTPExpiry = null
       await user.save();
-
+      tempmail = null;
       res.json({ message: "password reset successful" });
     } else {
-      return res.json({ message: "invalid  OTP" });
+      return res.status(400).json({ message: "invalid  OTP" });
     }
-    TempMail = null;
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-
-

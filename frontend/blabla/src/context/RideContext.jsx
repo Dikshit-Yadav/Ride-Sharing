@@ -1,4 +1,4 @@
-import { createContext,useContext, useState} from "react";
+import { createContext, useContext, useState } from "react";
 
 const RideContext = createContext();
 
@@ -6,12 +6,18 @@ export const RideProvider = ({ children }) => {
 
     const getTodayDate = () => {
         const today = new Date();
-        return today.toString().split("T")[0]
+        const month = (today.getMonth() + 1).toString().padStart(2, '0');
+        const day = today.getDate().toString().padStart(2, '0');
+        const year = today.getFullYear();
+
+        return `${year}-${month}-${day}`;
     }
 
     const getCurrentTime = () => {
         const now = new Date();
-        return now.toString().slice(0, 5)
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
     }
 
     const [source, setSource] = useState("");
@@ -23,20 +29,23 @@ export const RideProvider = ({ children }) => {
     const [destLoc, setDestLoc] = useState(null);
     const [selectedDate, setSelectedDate] = useState(getTodayDate());
     const [time, setTime] = useState(getCurrentTime());
+    const [selecting, setSelecting] = useState("source");
+    const[vehicle, setVehicle] =  useState([]);
 
 
-
-    return(
+    return (
         <RideContext.Provider value={{
-source, setSource,
-destination, setDestination,
-sourceLoc, setSourceLoc,
-destLoc, setDestLoc,
-price, setPrice,
-seats, setSeats,
-vehicleId, setVehicleId,
-selectedDate, setSelectedDate,
-time, setTime
+            source, setSource,
+            destination, setDestination,
+            sourceLoc, setSourceLoc,
+            destLoc, setDestLoc,
+            price, setPrice,
+            seats, setSeats,
+            vehicleId, setVehicleId,
+            selectedDate, setSelectedDate,
+            selecting, setSelecting,
+            time, setTime,
+            vehicle, setVehicle
         }}>
             {children}
         </RideContext.Provider>

@@ -7,6 +7,7 @@ function ForgetPassword() {
     const navigate = useNavigate();
   const submit = async (e) => {
     e.preventDefault();
+    localStorage.setItem("email", email)
     try {
       await API.post("/auth/forget-password", { email });
       navigate("/reset-password")
