@@ -4,7 +4,7 @@ import "../style/Home.css";
 import { io } from "socket.io-client";
 import API from "../services/api";
 
-const socket = io("http://localhost:4550", {
+const socket = io("https://ride-sharing-a2gh.onrender.com", {
   transports: ["websocket"],
   withCredentials: true
 });

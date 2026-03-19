@@ -26,7 +26,7 @@ function MyProfile() {
           <div className="profile-pic">
             {user.profilePic ? (
               <img
-                src={`http://localhost:4550/profile/pic/${user.profilePic}`}
+                src={`https://ride-sharing-a2gh.onrender.com/profile/pic/${user.profilePic}`}
                 alt="Profile"
                 className="pic"
               />

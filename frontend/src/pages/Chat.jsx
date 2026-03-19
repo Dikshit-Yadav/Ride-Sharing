@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import API from '../services/api';
 import '../style/Chat.css';
 
-const socket = io('http://localhost:4550');
+const socket = io('https://ride-sharing-a2gh.onrender.com');
 
 function Chat() {
   const { userId: recipientId } = useParams();
