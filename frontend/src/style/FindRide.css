@@ -1,0 +1,252 @@
+body {
+  background: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 16px;
+  min-height: 80vh;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #22577a;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.search-box {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin: 30px auto;
+  max-width: 1100px;
+}
+
+.search-box input,
+.search-box button {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #38a3a5;
+  box-shadow: 0 0 0 3px rgba(56, 163, 165, 0.15);
+}
+
+.search-box button {
+  background: #38a3a5;
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background: #22577a;
+  transform: translateY(-1px);
+}
+
+.input-group {
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 100;
+  border: 1px solid #eee;
+  margin-top: 5px;
+}
+
+.suggestions div {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f5f7fa;
+}
+
+.suggestions div:hover {
+  background: #f0f9ff;
+  color: #22577a;
+}
+
+.rides-section-title {
+  color: #22577a;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.rides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.rides-container{
+  max-width:1100px;
+  margin:auto;
+  padding:0 16px;
+}
+
+.ride-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e0e6eb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ride-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.ride-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.ride-header h4 {
+  margin: 0;
+  color: #22577a;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.price {
+  font-weight: bold;
+  color: #57cc99;
+  font-size: 1.2rem;
+}
+
+.ride-info {
+  margin-bottom: 20px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.ride-info p {
+  margin: 6px 0;
+}
+
+.book-btn {
+  width: 100%;
+  padding: 12px;
+  background: #38a3a5;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: auto;
+}
+
+.book-btn:hover {
+  background: #22577a;
+}
+
+.empty-text {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-top: 40px;
+}
+
+.suggestions::-webkit-scrollbar {
+  width: 6px;
+}
+
+.suggestions::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .search-box {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .search-box input,
+  .search-box button {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+ .rides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+  
+  .ride-card {
+    padding: 16px;
+  }
+
+  .ride-header h4 {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 1.1rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .search-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}

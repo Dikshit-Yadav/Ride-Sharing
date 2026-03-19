@@ -1,0 +1,157 @@
+body {
+  background: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.profile-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+  min-height: 80vh;
+}
+
+.profile-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e6eb;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-header h2 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  color: #22577a;
+  font-weight: 700;
+}
+
+.profile-header p {
+  color: #555;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-label {
+  font-weight: 600;
+  color: #22577a;
+  font-size: 1rem;
+}
+
+.profile-value {
+  color: #555;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.profile-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.profile-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background: #38a3a5;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #22577a;
+  transform: translateY(-1px);
+}
+
+.logout-btn {
+  background: #fff;
+  color: #e53935;
+  border: 1px solid #e53935;
+}
+
+.logout-btn:hover {
+  background: #ffebee;
+  transform: translateY(-1px);
+}
+
+.profile-pic {
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  background: linear-gradient(135deg, #c7f9cc, #80ed99);
+  box-sizing: border-box;
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.pic {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #fff;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .profile-card {
+    padding: 20px;
+  }
+
+  .profile-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .profile-pic {
+    height: 120px;
+    width: 120px;
+  }
+
+  .profile-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .profile-value {
+    text-align: left;
+    color: #333;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+  }
+}

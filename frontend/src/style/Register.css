@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #22577a 0%, #38a3a5 100%);
+  box-sizing: border-box;
+}
+
+.register-container form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 0;
+  color: #333;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.register-container input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.register-container input:focus {
+  outline: none;
+  border-color: #38a3a5;
+  box-shadow: 0 0 0 2px rgba(56, 163, 165, 0.2);
+}
+
+.register-container button {
+  width: 100%;
+  padding: 12px;
+  background: #38a3a5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.register-container button:hover {
+  background: #22577a;
+}
+
+.register-links {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.register-links a {
+  color: #38a3a5;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.register-links a:hover {
+  color: #22577a;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .register-container form {
+    padding: 25px;
+  }
+}

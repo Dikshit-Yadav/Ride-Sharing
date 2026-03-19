@@ -1,0 +1,105 @@
+body {
+  background: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.bookride-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+  min-height: 80vh;
+}
+
+.bookride-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #22577a;
+  font-weight: 700;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e6eb;
+}
+
+.card p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.card label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #22577a;
+}
+
+.card select {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card select:focus {
+  border-color: #38a3a5;
+  box-shadow: 0 0 0 3px rgba(56, 163, 165, 0.15);
+}
+
+.price {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #57cc99;
+}
+
+.book-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #38a3a5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.book-btn:hover:not(:disabled) {
+  background: #22577a;
+  transform: translateY(-1px);
+}
+
+.book-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.book-btn:disabled {
+  background: #c7f9cc;
+  cursor: not-allowed;
+}
+
+.bookride-container p {
+  text-align: center;
+  color: #666;
+}
+
+@media (max-width: 480px) {
+  .bookride-container h2 {
+    font-size: 1.75rem;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}

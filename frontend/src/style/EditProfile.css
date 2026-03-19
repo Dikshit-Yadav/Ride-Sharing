@@ -1,0 +1,104 @@
+body {
+  background: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.edit-profile-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 0 20px;
+  min-height: 80vh;
+}
+
+.edit-profile-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e6eb;
+}
+
+.edit-profile-card h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #22577a;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.edit-profile-card label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #22577a;
+}
+
+.edit-profile-card input {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-profile-card input:focus {
+  border-color: #38a3a5;
+  box-shadow: 0 0 0 3px rgba(56, 163, 165, 0.15);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.edit-actions button {
+  flex: 1;
+  padding: 12px 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.edit-actions button[type="submit"] {
+  background: #38a3a5;
+  color: #fff;
+}
+
+.edit-actions button[type="submit"]:hover {
+  background: #22577a;
+  transform: translateY(-1px);
+}
+
+.cancel-btn {
+  background: #fff;
+  color: #555;
+  border: 1px solid #d0d7de;
+}
+
+.cancel-btn:hover {
+  background: #f5f7fa;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .edit-profile-container {
+    margin: 20px auto;
+  }
+  .edit-profile-card {
+    padding: 20px;
+  }
+  .edit-profile-card h2 {
+    font-size: 1.75rem;
+  }
+  .edit-actions {
+    flex-direction: column;
+  }
+}
