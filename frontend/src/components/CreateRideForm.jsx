@@ -190,7 +190,7 @@ function CreatRideForm() {
               required
             >
               <option value="">Select Vehicle</option>
-              {vehicle.map((v) => (
+              {vehicle?.map((v) => (
                 <option key={v._id} value={v._id}>
                   {v.VhNumber}
                 </option>
