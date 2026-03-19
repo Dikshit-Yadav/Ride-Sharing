@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 import Navbar from "../components/Navbar";
 import { useNavigate, Link } from "react-router-dom";
-import "../style/MyRides.css"
+import "../style/MyRide.css"
 export default function MYRides() {
     const navigate = useNavigate();
     const [bookings, setBookings] = useState([]);
