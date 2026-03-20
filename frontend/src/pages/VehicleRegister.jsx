@@ -16,7 +16,7 @@ function VehicleRegister() {
     const fetchVehicle = async () => {
       try {
         const res = await API.get("/vehicle/my", { withCredentials: true })
-        setVehicle(res.data.vehicles)
+        setVehicle(res.data.vehicles || []);
       } catch (err) {
         alert("no vehicles register")
       }
@@ -60,7 +60,7 @@ function VehicleRegister() {
 
         <div className="all-vh">
           <h2>My Vehicles</h2>
-          {vehicle.map(v => (
+          {vehicle?.map(v => (
             <div className="vhCard" key={v._id}>
               <strong>Vehicle Number:</strong> {v.VhNumber} <br />
               <strong>Vehicle Model:</strong> {v.VhModel} <br />
