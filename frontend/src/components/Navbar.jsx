@@ -16,32 +16,56 @@ function Navbar() {
   const [openNotifications, setOpenNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
 
+  // useEffect(() => {
+  //   if (!user) return;
+
+  //   socket.emit("join", user._id);
+
+  //   socket.on("booking", (data) => {
+  //     setNotifications((e) => [data, ...e])
+  //   })
+  //   return () => {
+  //     socket.off("booking");
+  //   }
+
+  // }, [user]);
+
+  // useEffect(() => {
+  //   if (!user) return;
+
+  //   socket.emit("join", user._id);
+
+  //   socket.on("bookingStatus", (data) => {
+  //     setNotifications(prev => [data, ...prev]);
+  //   });
+
+  //   return () => socket.off("bookingStatus");
+  // }, [user]);
+
+
   useEffect(() => {
-    if (!user) return;
+  if (!user) return;
 
-    socket.emit("join", user._id);
+  socket.emit("join", user._id);
 
-    socket.on("booking", (data) => {
-      setNotifications((e) => [data, ...e])
-    })
-    return () => {
-      socket.off("booking");
-    }
+  const handleBooking = (data) => {
+    if (!data) return;
+    setNotifications(prev => [data, ...prev]);
+  };
 
-  }, [user]);
+  const handleStatus = (data) => {
+    if (!data) return;
+    setNotifications(prev => [data, ...prev]);
+  };
 
-  useEffect(() => {
-    if (!user) return;
+  socket.on("booking", handleBooking);
+  socket.on("bookingStatus", handleStatus);
 
-    socket.emit("join", user._id);
-
-    socket.on("bookingStatus", (data) => {
-      setNotifications(prev => [data, ...prev]);
-    });
-
-    return () => socket.off("bookingStatus");
-  }, [user]);
-
+  return () => {
+    socket.off("booking", handleBooking);
+    socket.off("bookingStatus", handleStatus);
+  };
+}, [user]);
   const handleConfirm = async (notification) => {
     try {
       await API.put(`/ride/confirm/${notification.bookingId}`, {}, {
@@ -111,7 +135,7 @@ function Navbar() {
             >
               <i className="fa-regular fa-bell"></i>
               {
-                notifications.length > 0 && (
+                notifications?.length > 0 && (
                   <span className="notification-count">{notifications.length}</span>
                 )}
             </div>
@@ -164,7 +188,7 @@ function Navbar() {
               <h4>Notifications</h4>
 
               {notifications.length == 0 ? (<p>No notifications</p>) : (
-                notifications.map((n, i) => (
+                Array.isArray(notifications) && notifications.map((n, i) => (
                   <div key={i} className="notification-item">
                     <span>{n.message}</span>
 

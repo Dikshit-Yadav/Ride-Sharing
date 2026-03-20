@@ -27,7 +27,7 @@ function CreatRideForm() {
     const fetchVehicles = async () => {
       try {
         const res = await API.get("/vehicle/my", { withCredentials: true });
-        setVehicle(res.data.vehicles);
+        setVehicle(res.data.vehicles || []);
       } catch (err) {
         console.error(err);
       }
@@ -190,7 +190,7 @@ function CreatRideForm() {
               required
             >
               <option value="">Select Vehicle</option>
-              {vehicle?.map((v) => (
+              {Array.isArray(vehicle) && vehicle.map((v) => (
                 <option key={v._id} value={v._id}>
                   {v.VhNumber}
                 </option>
