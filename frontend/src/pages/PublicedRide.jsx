@@ -14,7 +14,7 @@ function PublicedRide() {
     const fetchMyRides = async () => {
       try {
         const res = await API.get("/ride/publiced");
-        setRides(res.data.rides);
+        setRides(res.data.rides || []);
       } catch (err) {
         console.error(err);
       } finally {
@@ -38,7 +38,7 @@ const deleteRide = async (id) => {
 const handlePassenger = async (id) => {
   try {
     const res = await API.get(`/ride/passengers/${id}`, { withCredentials: true });
-    setPassengers(res.data.bookings);
+    setPassengers(res.data.bookings || []);
     setShowModal(true);
   } catch (err) {
     alert(err.response?.data?.message || "Failed to fetch passengers");
@@ -60,12 +60,12 @@ const handlePassenger = async (id) => {
 
         {loading && <p>Loading...</p>}
 
-        {!loading && rides.length === 0 && (
+        {!loading && (!rides || rides.length === 0) && (
           <p>You have not published any rides.</p>
         )}
         
         <div className="rides-list">
-          {rides.map((ride) => (
+          {rides?.map((ride) => (
             <div key={ride._id} className="ride-card">
               <h3>
                 {ride.source} → {ride.destination}
@@ -73,7 +73,7 @@ const handlePassenger = async (id) => {
               <p>Date: {ride.date} | Time:{ride.time}</p>
               <p>Price: ₹{ride.price}</p>
               <p>Seats Available: {ride.seats}</p>
-              <p>Driver: {ride.driver.name}</p>
+              <p>Driver: {ride.driver?.name || "N/A"}</p>
               <button onClick={() => deleteRide(ride._id)}>Delete</button>
                <button onClick={() => handlePassenger(ride._id)}>Passenger</button>
             </div>
@@ -89,7 +89,7 @@ const handlePassenger = async (id) => {
                 <h3>Passenger List</h3>
                 <button onClick={() => setShowModal(false)} style={{ border: "none", background: "transparent", fontSize: "1.5rem", cursor: "pointer" }}>&times;</button>
               </div>
-              {passengers.length === 0 ? <p>No passengers found.</p> : (
+              {!passengers || passengers.length === 0 ? <p>No passengers found.</p> : (
                 <ul style={{ listStyle: "none", padding: 0 }}>
                   {passengers.map(p => (
                     <li key={p._id} style={{ borderBottom: "1px solid #171717", padding: "10px 0" }}>
