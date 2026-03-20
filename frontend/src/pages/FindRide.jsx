@@ -76,7 +76,8 @@ function FindRide() {
         },
         withCredentials: true
       });
-      setRides(res.data.rides);
+      
+      setRides(res.data.rides || []);
     } catch (err) {
       console.error(err);
     }
@@ -147,14 +148,14 @@ function FindRide() {
 
 
       <h3 className="rides-section-title">Available Rides</h3>
-      {searched && rides.length === 0 ? (
+      {searched && (!rides || rides.length === 0) ? (
         <p className="empty-text">No rides found</p>
       ) : (
 
         <div className="rides-container">
 
           <div className="rides-grid">
-            {rides.map(ride => (
+            {rides?.map(ride => (
               <div
                 className="ride-card"
                 key={ride._id}
@@ -168,7 +169,7 @@ function FindRide() {
                   <p>Date: {ride.date}</p>
                   <p>Time: {ride.time}</p>
                   <p>Seats: {ride.seats}</p>
-                  <p>Driver:{ride.driver.name}</p>
+                  <p>Driver: {ride.driver?.name || "N/A"}</p>
                 </div>
 
                 <button
