@@ -17,6 +17,7 @@ function VehicleRegister() {
       try {
         const res = await API.get("/vehicle/my", { withCredentials: true })
         setVehicle(res.data.vehicles || []);
+        console.log(res.data)
       } catch (err) {
         alert("no vehicles register")
       }
