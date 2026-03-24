@@ -28,7 +28,7 @@ const main = async () => {
 
 main()
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://ride-sharing-1.onrender.com",
   credentials: true
 }));
 app.use(express.json());
