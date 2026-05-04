@@ -9,9 +9,10 @@ export default function BookRide() {
   const navigate = useNavigate();
 
   const ride = state?.ride;
-  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(() => JSON.parse(sessionStorage.getItem("user")));
   const [bookingSeats, setBookingSeats] = useState(1);
   const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     if (!ride) {
@@ -24,6 +25,10 @@ export default function BookRide() {
     }
   }, [ride, user, navigate]);
 
+  if (bookingSeats > ride.seats) {
+  alert("Not enough seats available");
+  return;
+}
 
   if (!ride || !user) {
     return <p>Loading...</p>;

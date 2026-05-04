@@ -1,6 +1,5 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
-import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -22,11 +21,6 @@ import Chat from "./pages/Chat";
 
 function App() {
 
-
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("loggedIn") === "true"
-  );
-
   return (
     <BrowserRouter>
       <Routes>
@@ -35,13 +29,13 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/create-ride" element={
           <ProtectedRouteWrapper
-            isLoggedIn={isLoggedIn}>
+            >
             <CreateRide />
           </ProtectedRouteWrapper>
         } />
         <Route path="/my-rides" element={
           <ProtectedRouteWrapper
-            isLoggedIn={isLoggedIn}
+            
           >
             <MYRides />
           </ProtectedRouteWrapper>
@@ -60,7 +54,7 @@ function App() {
 
         <Route path="/register-vehicle" element={
           <ProtectedRouteWrapper
-            isLoggedIn={isLoggedIn}
+            
           >
             <VehicleRegister />
           </ProtectedRouteWrapper>
@@ -69,7 +63,7 @@ function App() {
         <Route path="/publiced-rides" element={
 
           <ProtectedRouteWrapper
-            isLoggedIn={isLoggedIn}
+            
           >
             <PublicedRide />
           </ProtectedRouteWrapper>
@@ -78,7 +72,7 @@ function App() {
         <Route path="/rides" element={<FindRide />} />
         <Route path="/ride/book" element={
           <ProtectedRouteWrapper
-            isLoggedIn={isLoggedIn}
+            
           >
             <BookRide />
           </ProtectedRouteWrapper>
@@ -86,21 +80,21 @@ function App() {
 
         <Route path="/my-profile" element={
           <ProtectedRouteWrapper
-            isLoggedIn={isLoggedIn}
+            
           >
             <MyProfile />
           </ProtectedRouteWrapper>
         } />
         <Route path="/edit-profile" element={
           <ProtectedRouteWrapper
-            isLoggedIn={isLoggedIn}
+            
           >
             <EditProfile />
           </ProtectedRouteWrapper>
         } />
         <Route path="/chat/:userId" element={
           <ProtectedRouteWrapper
-            isLoggedIn={isLoggedIn}
+            
           >
             <Chat />
           </ProtectedRouteWrapper>

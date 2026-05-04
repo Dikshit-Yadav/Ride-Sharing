@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://ride-sharing-1.onrender.com",
+    origin: process.env.CLIENT_URL,
     credentials: true,
   },
 });
@@ -28,9 +28,9 @@ const main = async () => {
 
 main()
 app.use(cors({
-  origin: "https://ride-sharing-1.onrender.com",
+  origin: process.env.CLIENT_URL,
   credentials: true
-}));
+})); 
 app.use(express.json());
 app.use(cookieParser());
 app.use((req, res, next) => {

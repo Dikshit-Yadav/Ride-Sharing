@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import API from '../services/api';
 import '../style/Chat.css';
 
-const socket = io('https://ride-sharing-a2gh.onrender.com');
+const socket = io(import.meta.env.VITE_API);
 
 function Chat() {
   const { userId: recipientId } = useParams();
@@ -14,7 +14,7 @@ function Chat() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = sessionStorage.getItem('user');
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);

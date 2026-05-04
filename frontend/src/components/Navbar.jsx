@@ -4,49 +4,31 @@ import "../style/Home.css";
 import { io } from "socket.io-client";
 import API from "../services/api";
 
-const socket = io("https://ride-sharing-a2gh.onrender.com", {
+const socket = io(import.meta.env.VITE_API, {
   transports: ["websocket"],
   withCredentials: true
 });
 
 function Navbar() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
   const [openMenu, setOpenMenu] = useState(false);
   const [openNotifications, setOpenNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
 
-  // useEffect(() => {
-  //   if (!user) return;
-
-  //   socket.emit("join", user._id);
-
-  //   socket.on("booking", (data) => {
-  //     setNotifications((e) => [data, ...e])
-  //   })
-  //   return () => {
-  //     socket.off("booking");
-  //   }
-
-  // }, [user]);
-
-  // useEffect(() => {
-  //   if (!user) return;
-
-  //   socket.emit("join", user._id);
-
-  //   socket.on("bookingStatus", (data) => {
-  //     setNotifications(prev => [data, ...prev]);
-  //   });
-
-  //   return () => socket.off("bookingStatus");
-  // }, [user]);
-
-
   useEffect(() => {
   if (!user) return;
 
-  socket.emit("join", user._id);
+  const handleConnect = () => {
+    socket.emit("join", user._id);
+  };
+
+  if (socket.connected) {
+    handleConnect();
+  } else {
+    socket.on("connect", handleConnect);
+  }
 
   const handleBooking = (data) => {
     if (!data) return;
@@ -62,10 +44,12 @@ function Navbar() {
   socket.on("bookingStatus", handleStatus);
 
   return () => {
+    socket.off("connect", handleConnect);
     socket.off("booking", handleBooking);
     socket.off("bookingStatus", handleStatus);
   };
 }, [user]);
+
   const handleConfirm = async (notification) => {
     try {
       await API.put(`/ride/confirm/${notification.bookingId}`, {}, {
@@ -87,7 +71,7 @@ function Navbar() {
       await API.put(`/ride/reject/${notification.bookingId}`, {}, {
         withCredentials: true
       });
-      setNotifications(e => 
+      setNotifications(e =>
         e.filter(n => n.bookingId !== notification.bookingId)
       );
       alert("Booking rejected!");
@@ -96,19 +80,19 @@ function Navbar() {
     }
   };
 
-  const logout = async() => {
-    try{
+  const logout = async () => {
+    try {
       await API.get("/auth/logout");
       const confirmLogout = window.confirm("Are you sure you want to logout?");
-    if (confirmLogout) {
-      localStorage.removeItem("user");
-      sessionStorage.removeItem("loggedIn");
-      navigate("/login");
-    }
-    }catch(err){
+      if (confirmLogout) {
+        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("loggedIn");
+        navigate("/login");
+      }
+    } catch (err) {
       console.error(err);
     }
-    
+
   };
 
   return (
@@ -148,7 +132,7 @@ function Navbar() {
 
             {openMenu && (
               <div className="dropdown">
-                <button onClick={()=>{
+                <button onClick={() => {
                   navigate("/my-profile")
                 }}>My Profile</button>
                 <button

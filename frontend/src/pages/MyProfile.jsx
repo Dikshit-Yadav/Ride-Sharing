@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 function MyProfile() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(sessionStorage.getItem("user"));
 
   if (!user) {
     navigate("/login");
@@ -55,7 +55,7 @@ function MyProfile() {
             <button
               className="logout-btn"
               onClick={() => {
-                localStorage.clear();
+                sessionStorage.clear();
                 navigate("/login");
               }}
             >

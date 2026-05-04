@@ -8,13 +8,13 @@ const axios = require("axios");
 exports.rideCreate = async (req, res) => {
     try {
         const {
-            source,destination,date,time,price,seats,vehicle,sourceLoc,destLoc,distance,duration,routeGeometry 
+            source, destination, date, time, price, seats, vehicle, sourceLoc, destLoc, distance, duration, routeGeometry
         } = req.body
 
         // const vehicle = await Vehicle.findOne({ user: req.user.id });
 
         const ride = await Ride.create({
-            driver: req.user.id,vehicle,source,destination,date,time,price,seats,sourceLoc,destLoc,distance,duration,routeGeometry
+            driver: req.user.id, vehicle, source, destination, date, time, price, seats, sourceLoc, destLoc, distance, duration, routeGeometry
         })
 
         res.status(201).json({
@@ -158,9 +158,9 @@ exports.similarRide = async (req, res) => {
 
 exports.bookRide = async (req, res) => {
     try {
-        const { ride: rideId, passenger: passengerId } = req.body;
+        const { ride: rideId, passenger: passengerId, bookingSeats, } = req.body;
         const ridec = await Ride.findById(rideId);
-
+        console.log(rideId)
         if (!ridec) {
             return res.status(404).json({ message: "Ride not found" });
         }
@@ -182,9 +182,23 @@ exports.bookRide = async (req, res) => {
             });
         }
 
+        const updatedRide = await Ride.findOneAndUpdate(
+            { _id: rideId, seats: { $gte: bookingSeats } },
+            { $inc: { seats: -bookingSeats } },
+            { new: true }
+        );
+
+        if (!updatedRide) {
+            return res.status(400).json({
+                message: "Not enough seats available",
+            });
+        }
+
+
         const booking = await Booking.create(req.body);
         const ride = await Ride.findById(booking.ride).populate("driver");
         const bookingDetails = await Booking.findById(booking._id).populate("passenger");
+        console.log("Emitting to driver:", ride.driver._id.toString());
         req.io.to(ride.driver._id.toString()).emit("booking", {
             type: "BOOKING_REQUEST",
             message: `New booking request from ${bookingDetails.passenger.name} with ${booking.bookingSeats} seats`,
@@ -233,11 +247,22 @@ exports.rejectBooking = async (req, res) => {
     try {
         const booking = await Booking.findById(req.params.bookingId);
 
+
+
         if (!booking) {
             return res.status(404).json({ message: "Booking not found" });
         }
 
         booking.status = "rejected";
+        const rideupdate = await Ride.findByIdAndUpdate(
+            {
+                _id: booking.ride,
+            },
+            {
+                $inc: { seats: booking.bookingSeats },
+            },
+            { new: true }
+        );
         await booking.save();
 
         req.io.to(booking.passenger.toString()).emit("bookingStatus", {

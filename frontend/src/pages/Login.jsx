@@ -13,10 +13,9 @@ function Login() {
 
     try {
       const res = await API.post("/auth/login", { email, password });
-
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      sessionStorage.setItem("loggedIn", "true");
-      navigate("/");
+      const user = res.data.user;
+      sessionStorage.setItem("user", JSON.stringify(user));
+      navigate("/",{ replace: true });
     } catch (err) {
       alert("Invalid email or password", err);
     }

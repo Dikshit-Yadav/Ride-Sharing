@@ -31,9 +31,6 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    // const buffer = Buffer.from("Hello");
-    // console.log(buffer);
-
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
@@ -65,6 +62,20 @@ exports.login = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+};
+
+exports.isme = (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({
+      message: "Unauthorized",
+      isauthenticate: false,
+    });
+  }
+
+  res.json({
+    user: req.user,
+    isauthenticate: true
+  });
 };
 
 exports.forgetPassword = async (req, res) => {

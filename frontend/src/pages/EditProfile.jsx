@@ -5,7 +5,7 @@ import "../style/EditProfile.css";
 
 function EditProfile() {
   const navigate = useNavigate();
-  const Cuser = JSON.parse(localStorage.getItem("user"));
+  const Cuser = JSON.parse(sessionStorage.getItem("user"));
 
   const [formData, setFormData] = useState({
     name: Cuser?.name || "",
@@ -52,7 +52,7 @@ function EditProfile() {
         updatedUser = picRes.data.user;
       }
 
-      localStorage.setItem("user", JSON.stringify(updatedUser));
+      sessionStorage.setItem("user", JSON.stringify(updatedUser));
       alert("Profile updated successfully!");
       navigate("/");
     } catch (err) {
